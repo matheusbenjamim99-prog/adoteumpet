@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block title %}Caminho do Nosso Lar | Adoção e Apadrinhamento de Pets{% endblock %}
+{% block content %}
+<header class="page-header" data-aos="fade-down">
+    <h1>Fale Conosco</h1>
+    <p>Tire suas dúvidas ou envie sua mensagem. Nossa equipe de voluntários responderá o mais rápido possível!</p>
+</header>
+
+<main>
+    <section class="contact-area">
+
+        <div class="contact-info-grid" data-aos="fade-up">
+
+            <div class="contact-box donate-box">
+                <h3>Doação Direta (Depósito/Pix)</h3>
+                <p class="contact-detail">Sua ajuda salva vidas! Utilize os dados abaixo:</p>
+                <div class="bank-details">
+                    <p><strong>Banco:</strong> Banco do Brasil</p>
+                    <p><strong>Agência:</strong> 0000-0</p>
+                    <p><strong>Conta Corrente:</strong> 00000-0</p>
+                    <p><strong>Nome:</strong> Instituto Causa Pet</p>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <h3>Fale por E-mail</h3>
+                <p class="contact-detail">Para parcerias ou questões administrativas.</p>
+                <a href="mailto:contato@caminhodonossolar.com.br" class="email-button">Enviar E-mail</a>
+            </div>
+
+            <div class="contact-box">
+                <h3>Atendimento Rápido</h3>
+                <p class="contact-detail">Tire dúvidas imediatas sobre adoção ou resgate de animais.</p>
+                <a href="https://api.whatsapp.com/send?phone=5585996991515&text=Ol%C3%A1! Vim pelo site e gostaria de conversar sobre..."
+                    target="_blank" class="whatsapp-button">WhatsApp (85) 99699-1515</a>
+            </div>
+        </div>
+
+        <section class="contact-form-section">
+            <h2 data-aos="fade-right">Envie sua Mensagem</h2>
+
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/SEU_EMAIL_AQUI" method="POST"
+                data-aos="zoom-in">
+
+                <input type="hidden" name="_subject" value="Nova Mensagem do Site - Contato Geral">
+                <input type="hidden" name="_next" value="https://SEUSITE.com.br/contact.html?success=true">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div>
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="Nome" required>
+                    <small class="error-message" id="error-name"></small>
+                </div>
+
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="Email" required>
+                    <small class="error-message" id="error-email"></small>
+                </div>
+
+                <div>
+                    <label for="phone">Telefone / WhatsApp (Opcional)</label>
+                    <input type="text" id="phone" name="Telefone">
+                </div>
+
+                <div>
+                    <label for="message-type">Motivo do Contato</label>
+                    <select id="message-type" name="Motivo" required>
+                        <option value="" disabled selected>Selecione o motivo</option>
+                        <option value="Adocao">Dúvida sobre Adoção</option>
+                        <option value="Voluntariado">Quero ser Voluntário</option>
+                        <option value="Apadrinhamento">Dúvida sobre Apadrinhamento</option>
+                        <option value="Parceria">Proposta de Parceria</option>
+                        <option value="Outros">Outros Assuntos</option>
+                    </select>
+                    <small class="error-message" id="error-message-type"></small>
+                </div>
+
+                <div>
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="Mensagem" rows="5" required></textarea>
+                    <small class="error-message" id="error-message"></small>
+                </div>
+
+                <button type="submit" class="form-submit-button">Enviar Mensagem</button>
+
+                <div id="alert-success"
+                    style="display: none; background-color: var(--color-secondary); color: white; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: bold; text-align: center;">
+                    ✅ Mensagem enviada com sucesso! Em breve entraremos em contato.
+                </div>
+            </form>
+        </section>
+
+        <section class="location-section" data-aos="fade-up">
+            <h2>Onde Nos Encontrar</h2>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15923.498455644783!2d-38.549242964999995!3d-3.73187105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c7499690184a51%3A0x673c242c3c6f0923!2sFortaleza%2C%20CE!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer class="main-footer">
+</footer>
+
+<a href="https://api.whatsapp.com/send?phone=5585996991515&text=Olá! Gostaria de informações gerais sobre a adoção e o projeto Caminho do Nosso Lar."
+    target="_blank" class="whatsapp-float" aria-label="Fale Conosco pelo WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init({ duration: 1000, once: true });
+
+        // --- LÓGICA DE VALIDAÇÃO DO FORMULÁRIO (contact.html) ---
+
+        const form = document.getElementById('contact-form');
+        const urlParams = new URLSearchParams(window.location.search);
+        const successAlert = document.getElementById('alert-success');
+
+        // Exibir alerta de sucesso se houver '?success=true' na URL
+        if (urlParams.get('success') === 'true') {
+            successAlert.style.display = 'block';
+            history.replaceState(null, null, window.location.pathname);
+        }
+
+        form.addEventListener('submit', function (event) {
+            let isValid = true;
+            const requiredFields = ['name', 'email', 'message-type', 'message'];
+
+            // Limpar mensagens de erro e bordas
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('input, select, textarea').forEach(el => el.style.border = '1px solid var(--color-border)');
+
+
+            requiredFields.forEach(id => {
+                const input = document.getElementById(id);
+                const error = document.getElementById(`error-${id}`);
+
+                if (!input.value.trim() || (input.tagName === 'SELECT' && input.value === '')) {
+                    error.textContent = 'Este campo é obrigatório.';
+                    input.style.border = '2px solid #e74c3c'; // Cor de erro
+                    isValid = false;
+                }
+            });
+
+            // Validação Específica de E-mail
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('error-email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailInput.value.trim() && !emailRegex.test(emailInput.value.trim())) {
+                emailError.textContent = 'Por favor, insira um endereço de e-mail válido.';
+                emailInput.style.border = '2px solid #e74c3c';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Impede o envio se a validação falhar
+            }
+        });
+    });
+</script>
+{% endblock %}

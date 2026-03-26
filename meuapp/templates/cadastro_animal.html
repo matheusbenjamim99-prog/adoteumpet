@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cadastrar Animal{% endblock %}
+
+{% block content %}
+
+<header class="page-header" data-aos="fade-down">
+    <h1>Cadastrar Animal</h1>
+    <p>Ajude um pet a encontrar um lar 🐶</p>
+</header>
+
+<main>
+    <section class="contact-area">
+
+        <section class="contact-form-section">
+            <h2 data-aos="fade-right">Novo Pet</h2>
+
+            <form method="post" enctype="multipart/form-data" class="contact-form" data-aos="zoom-in">
+                {% csrf_token %}
+
+                <div>
+                    <label>Nome</label>
+                    {{ form.nome }}
+                </div>
+
+                <div>
+                    <label>Espécie</label>
+                    {{ form.especie }}
+                </div>
+
+                <div>
+                    <label>Idade</label>
+                    {{ form.idade }}
+                </div>
+
+                <div>
+                    <label>Porte</label>
+                    {{ form.porte }}
+                </div>
+
+                <div>
+                    <label>Meta (R$)</label>
+                    {{ form.meta }}
+                </div>
+
+                <div>
+                    <label>Descrição</label>
+                    {{ form.descricao }}
+                </div>
+
+                <div>
+                    <label>Foto</label>
+                    {{ form.foto }}
+                </div>
+                <div>
+                    {{ form.errors }}
+                </div>
+
+                <button type="submit" class="form-submit-button">
+                    Cadastrar
+                </button>
+
+            </form>
+
+        </section>
+
+    </section>
+</main>
+
+{% endblock %}

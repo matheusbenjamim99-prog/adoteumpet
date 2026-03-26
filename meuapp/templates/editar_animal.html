@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Editar Animal{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+    <h1>Editar Animal</h1>
+</header>
+
+<main>
+    <section class="contact-area">
+
+        <section class="contact-form-section">
+            <h2>Atualizar informações</h2>
+
+            <form method="post" enctype="multipart/form-data" class="contact-form">
+                {% csrf_token %}
+
+                <div>
+                    <label>Nome</label>
+                    {{ form.nome }}
+                </div>
+
+                <div>
+                    <label>Espécie</label>
+                    {{ form.especie }}
+                </div>
+
+                <div>
+                    <label>Idade</label>
+                    {{ form.idade }}
+                </div>
+
+                <div>
+                    <label>Porte</label>
+                    {{ form.porte }}
+                </div>
+
+                <div>
+                    <label>Meta</label>
+                    {{ form.meta }}
+                </div>
+
+                <div>
+                    <label>Descrição</label>
+                    {{ form.descricao }}
+                </div>
+
+                <div>
+                    <label>Foto</label>
+                    {{ form.foto }}
+                </div>
+
+                <button type="submit" class="form-submit-button">
+                    Salvar Alterações
+                </button>
+
+            </form>
+
+        </section>
+
+    </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Caminho do Nosso Lar | Adoção e Apadrinhamento de Pets{% endblock %}
+{% block content %}
+<header class="hero" data-aos="fade-in">
+    <div class="hero-content">
+        <h1>Salvar Vidas, Encontrar o Lar Perfeito.</h1>
+        <p>Unimos ONGs, protetores e voluntários para facilitar adoções seguras e cheias de amor em Fortaleza e região.
+        </p>
+        <a href="{%url 'project'%}" class="cta-button">Ver Pets para Adoção</a>
+        <a href="{%url 'sponsorship'%}" class="cta-button secondary-cta-button">Apadrinhe um Pet</a>
+    </div>
+</header>
+
+<main>
+
+    <section class="mission-statement" data-aos="fade-up">
+        <h2>Nossa Missão é Transparente</h2>
+        <div class="mission-grid">
+            <div class="mission-item">
+                <i class="fas fa-heart"></i>
+                <h3>Adoção Responsável</h3>
+                <p>Processos rigorosos para garantir que cada pet vá para um lar seguro, com amor e atenção.</p>
+            </div>
+            <div class="mission-item">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Rede de Apoio</h3>
+                <p>Trabalhamos em conjunto com as melhores ONGs e protetores, maximizando o alcance e a eficiência dos
+                    resgates.</p>
+            </div>
+            <div class="mission-item">
+                <i class="fas fa-paw"></i>
+                <h3>Apadrinhamento de Idosos/Especiais</h3>
+                <p>Garantimos tratamento contínuo e dignidade para pets com necessidades especiais ou crônicas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="call-to-action" data-aos="zoom-in">
+        <h2>Seu Novo Melhor Amigo Espera por Você!</h2>
+        <p>Mais de 500 vidas transformadas. Deixe-nos ajudar a mudar a sua também.</p>
+        <a href="{% url 'project' %}" class="cta-button large-cta">Começar a Busca</a>
+    </section>
+
+    <section class="partners" data-aos="fade-up">
+        <h2>Nossos Parceiros de Causa</h2>
+        <div class="partners-logo-grid">
+            <img src="assets/simba.jpg" alt="Logo ONG Parceiro 1" loading="lazy">
+            <img src="assets/thor.jpg" alt="Logo ONG Parceiro 2" loading="lazy">
+            <img src="assets/mia.jpg" alt="Logo ONG Parceiro 3" loading="lazy">
+        </div>
+    </section>
+
+</main>
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Caminho do Nosso Lar | Adoção e Apadrinhamento de Pets{% endblock %}
+{% block content %}
+<header class="page-header" data-aos="fade-down">
+    <h1>Apadrinhe um Anjo: Ajuda Contínua</h1>
+    <p>Nem todos os pets podem ser adotados rapidamente. Ofereça um apoio financeiro mensal para garantir saúde e
+        bem-estar!</p>
+</header>
+
+<main class="pet-gallery">
+
+    <section class="bank-donation-highlight" data-aos="zoom-in"
+        style="width: 100%; text-align: center; margin-bottom: 40px; background-color: var(--bg-secondary); padding: 30px; border-radius: 12px; border-left: 5px solid var(--color-primary);">
+        <h2>Faça uma Doação Pontual</h2>
+        <p style="font-size: 1.1em; margin-bottom: 20px;">Use os dados abaixo para uma transferência de qualquer valor.
+        </p>
+        <div
+            style="max-width: 400px; margin: 0 auto; padding: 15px; background-color: var(--bg-main); border-radius: 8px; border: 1px solid var(--color-border);">
+            <p><strong>Banco:</strong> Banco do Brasil</p>
+            <p><strong>Agência:</strong> 0000-0</p>
+            <p><strong>Conta Corrente:</strong> 00000-0</p>
+            <p><strong>Nome:</strong> Instituto Causa Pet</p>
+            <p style="margin-top: 10px; color: var(--color-secondary);">Chave PIX pode ser solicitada via WhatsApp</p>
+        </div>
+    </section>
+
+</main>
+{% for c in cachorro %}
+{% if c.adotado == False %}
+    <section class="pet-gallery" id="petGalleryContainer" data-aos="fade-up">
+        <div class="pet-card sponsor-card" data-pet-id="TONY" data-goal="150" data-current="45" data-aos="fade-up">
+            {% if c.foto %}
+                <img src="{{ c.foto.url }}" width="300">
+                {% else %}
+                <p>Sem foto cadastrado.</p>
+                {% endif %}
+            <h2>{{ c.nome }}</h2>
+            <small>ONG Parceira: Abrigo Coração Amigo</small>
+            <p>🐾 <strong>Espécie:</strong> {{ c.especie }} | 🗓️ <strong>Idade:</strong> {{ c.idade }} anos</p>
+            <p class="description">{{ c.descricao }}</p>
+
+            <div class="sponsorship-progress">
+                <div class="progress-info">
+                    <span class="progress-needed">Meta: R$ {{ c.meta }}</span>
+                    <span class="progress-raised">Arrecadado: R$ {{ c.arrecadado }}</span>
+                </div>
+
+            <a href="https://api.whatsapp.com/send?phone=5585996991515&text=Olá! Quero apadrinhar o Tony e ajudar com seu tratamento."
+                target="_blank" class="whatsapp-button sponsor-button">
+                Quero Apadrinhar {{ c.nome }}!
+            </a>
+
+        </div>
+    </section>
+    {% endif %}
+{% endfor %}
+<section class="quick-sponsor-form-section" data-aos="fade-up">
+    <h2>Seja um Padrinho/Madrinha!</h2>
+</section>
+
+<footer class="main-footer">
+</footer>
+
+<a href="https://api.whatsapp.com/send?phone=5585996991515&text=Olá! Gostaria de informações gerais sobre a adoção e o projeto Caminho do Nosso Lar."
+    target="_blank" class="whatsapp-float" aria-label="Fale Conosco pelo WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+{% endblock %}

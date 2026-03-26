@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Criar Conta | Caminho do Nosso Lar{% endblock %}
+
+{% block content %}
+
+<header class="page-header" data-aos="fade-down">
+    <h1>Criar Conta</h1>
+    <p>Cadastre-se para adotar, apadrinhar e ajudar nossos pets 🐶</p>
+</header>
+
+<main>
+    <section class="contact-area">
+
+        <section class="contact-form-section">
+            <h2 data-aos="fade-right">Cadastro</h2>
+
+            <form method="post" class="contact-form" data-aos="zoom-in">
+                {% csrf_token %}
+
+                <div>
+                    <label>Usuário</label>
+                    {{ form.username }}
+                </div>
+
+                <div>
+                    <label>Senha</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div>
+                    <label>Confirmar Senha</label>
+                    {{ form.password2 }}
+                </div>
+
+                <button type="submit" class="form-submit-button">
+                    Criar Conta
+                </button>
+
+            </form>
+
+            <p style="margin-top:20px;">
+                Já possui conta?
+                <a href="/login/">Fazer login</a>
+            </p>
+
+        </section>
+
+    </section>
+</main>
+
+{% endblock %}

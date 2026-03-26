@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}Caminho do Nosso Lar | Adoção e Apadrinhamento de Pets{% endblock %}
+{% block content %}
+<header class="page-header" data-aos="fade-down">
+    <h1>Nossos Finais Felizes</h1>
+    <p>A prova de que a adoção muda vidas: conheça os pets que já encontraram seus lares!</p>
+</header>
+
+<main>
+
+    <div class="filter-bar">
+        <label for="filter-year">Filtrar por Ano:</label>
+        <select id="filter-year">
+            <option value="all">Todos os Anos</option>
+        </select>
+
+        <label for="search-name">Buscar por Nome:</label>
+        <input type="text" id="search-name" placeholder="Nome do pet ou adotante...">
+    </div>
+
+    <section class="success-gallery" id="successStoriesContainer">
+        {% for c in cachorro %}
+        {% if c.adotado == True %}
+        <div class="story-card" data-date="2025-06-15" data-name="Thor" data-adopter="Ana">
+            <div class="swiper storySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        {% if c.foto %}
+                        <img src="{{ c.foto.url }}" width="300">
+                        {% else %}
+                        <p>Sem foto cadastrado.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="story-details">
+                <span class="story-date">Adotado em {{c.diaAdocao}}</span>
+                <h2>{{ c.nome }}</h2>
+                <p class="adopter-credit">Adotado por: {{ c.adotadoPor }}</p>
+                <blockquote class="story-text">
+                    <p>{{ c.historia}}</p>
+                </blockquote>
+                <a href="contact.html?story=thor" class="secondary-cta-button small-btn">Compartilhar História</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="no-stories-feedback" style="display: none;">
+            <p>Nenhuma história encontrada com os critérios de filtro.</p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="main-footer">
+</footer>
+
+<a href="https://api.whatsapp.com/send?phone=5585996991515&text=Olá! Gostaria de informações gerais sobre a adoção e o projeto Caminho do Nosso Lar."
+    target="_blank" class="whatsapp-float" aria-label="Fale Conosco pelo WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init({ duration: 1000, once: true });
+
+        // --- LÓGICA DO SWIPER (CARROSSEL) ---
+
+        const swipers = document.querySelectorAll('.storySwiper');
+        swipers.forEach(swiperEl => {
+            new Swiper(swiperEl, {
+                loop: true,
+                pagination: {
+                    el: swiperEl.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                }
+            });
+        });
+
+
+        // --- LÓGICA DE FILTRAGEM DE HISTÓRIAS ---
+
+        const filterYear = document.getElementById('filter-year');
+        const searchName = document.getElementById('search-name');
+        const storyCards = document.querySelectorAll('.story-card');
+        const noStoriesFeedback = document.querySelector('.no-stories-feedback');
+
+        // 1. Preencher o Filtro de Ano
+        const availableYears = new Set();
+        storyCards.forEach(card => {
+            const dateAttr = card.getAttribute('data-date');
+            if (dateAttr) {
+                const year = dateAttr.substring(0, 4);
+                availableYears.add(year);
+            }
+        });
+
+        [...availableYears].sort((a, b) => b - a).forEach(year => {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            filterYear.appendChild(option);
+        });
+
+
+        // 2. Função de Aplicação de Filtros
+        function applyStoryFilters() {
+            const selectedYear = filterYear.value;
+            const searchString = searchName.value.toLowerCase().trim();
+            let storiesVisible = 0;
+
+            storyCards.forEach(card => {
+                const cardYear = card.getAttribute('data-date').substring(0, 4);
+                const cardName = card.getAttribute('data-name').toLowerCase();
+                const cardAdopter = card.getAttribute('data-adopter').toLowerCase();
+
+                const yearMatch = selectedYear === 'all' || cardYear === selectedYear;
+                const searchMatch = !searchString || cardName.includes(searchString) || cardAdopter.includes(searchString);
+
+                if (yearMatch && searchMatch) {
+                    card.style.display = 'flex';
+                    storiesVisible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (storiesVisible === 0) {
+                noStoriesFeedback.style.display = 'block';
+            } else {
+                noStoriesFeedback.style.display = 'none';
+            }
+        }
+
+        // 3. Event Listeners
+        filterYear.addEventListener('change', applyStoryFilters);
+        searchName.addEventListener('input', applyStoryFilters);
+        applyStoryFilters();
+    });
+</script>
+{% endblock %}

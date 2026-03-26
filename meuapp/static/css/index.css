@@ -1,0 +1,1063 @@
+/* --- INÍCIO: index.css (TEMA DARK MODE PADRÃO - Totalmente Funcional) --- */
+
+/* Importação de Fonte Profissional (Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* --- VARIÁVEIS CSS (Paleta Principal) --- */
+:root {
+    --color-primary: #FF8C64; /* Terracota (Ação Principal) */
+    --color-secondary: #00A896; /* Verde Esmeralda (Destaque) */
+    --color-whatsapp: #25D366; 
+    --color-btn-secondary: #536dfe; 
+    --color-footer-bg: #111111; /* Preto Sólido para Rodapé */
+    --color-footer-text: #ECF0F1; 
+
+    /* VARIAVEIS GLOBAIS DE TEMA (Padrão: DARK MODE) */
+    --bg-main: #1D232A; 
+    --bg-secondary: #2C3E50; 
+    --text-main: #FFFFFF; /* Texto principal Branco */
+    --text-medium: #BDC3C7; 
+    --color-border: #3E5463; 
+    --color-text-dark: var(--text-main); 
+}
+
+/* LIGHT MODE OVERRIDES (Tema Alternativo) */
+.light-mode {
+    --bg-main: #FFFFFF; 
+    --bg-secondary: #F0F2F5; 
+    --text-main: #333333; /* Texto principal Preto */
+    --text-medium: #666666; 
+    --color-border: #DDDDDD; 
+    --color-text-dark: var(--text-main);
+}
+
+/* --- ESTILOS GLOBAIS E RESET --- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+main {
+    padding-bottom: 50px;
+}
+
+/* --- NAVEGAÇÃO E HEADER --- */
+
+nav {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul a {
+    color: var(--text-main);
+    padding: 5px 0;
+    font-weight: 500;
+    position: relative;
+}
+
+nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s;
+}
+
+nav ul a:hover::after,
+nav ul a.active::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Hero Section (index.html) */
+.hero {
+    background: url('assets/hero-bg.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    color: #F0F0F0;
+}
+
+.page-header {
+    background-color: var(--bg-secondary);
+    padding: 50px 5% 30px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+}
+
+.page-header p {
+    font-size: 1.1em;
+    color: var(--text-medium);
+}
+
+/* --- BOTÕES E CTAS --- */
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.1s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+}
+
+.cta-button {
+    background-color: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+}
+
+.cta-button:hover {
+    background-color: #e67e5a;
+    border-color: #e67e5a;
+}
+
+.secondary-cta-button {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.secondary-cta-button:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.secondary-cta-button.small-btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+/* --- SEÇÕES GERAIS --- */
+
+.mission-statement, .partners, .call-to-action {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.mission-statement h2, .partners h2, .call-to-action h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+}
+
+.mission-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.mission-item {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mission-item i {
+    font-size: 2.5em;
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+}
+
+.partners-logo-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.partners-logo-grid img {
+    max-width: 150px;
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+.partners-logo-grid img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* --- FOOTER --- */
+
+.main-footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding: 40px 10% 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    display: block; /* Desfaz o flex do nav */
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section a {
+    color: var(--color-footer-text);
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-medium);
+}
+
+.back-to-top {
+    color: var(--color-secondary);
+    margin-left: 20px;
+}
+
+/* Ícones Sociais no Rodapé */
+.social-icons a {
+    font-size: 1.8em;
+    margin-right: 15px;
+    color: var(--color-footer-text);
+}
+
+.social-icons a:hover {
+    color: var(--color-secondary);
+}
+
+/* Botão Flutuante */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-whatsapp);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 900;
+}
+
+/* Toggle Dark/Light Mode */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.light-mode .theme-switch {
+    background-color: var(--color-secondary);
+}
+
+
+/* --- ESTILOS DE ADOÇÃO (project.html) --- */
+
+/* Filtros */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    padding: 20px 10%;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-controls label {
+    font-weight: 500;
+    color: var(--text-medium);
+}
+
+.filter-controls select {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-size: 1em;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.pet-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 5%;
+    justify-content: center;
+}
+
+.pet-card {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    padding-bottom: 20px;
+    border: 1px solid var(--color-border);
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px 12px 0 0;
+    border: none;
+}
+
+.pet-card h2 {
+    font-size: 1.8em;
+    margin: 15px 20px 5px;
+    color: var(--color-primary);
+}
+
+.pet-card small {
+    display: block;
+    margin: 0 20px;
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+.pet-card p {
+    margin: 10px 20px;
+    color: var(--text-medium);
+    font-size: 0.95em;
+}
+
+/* Botão de Contato do Pet */
+.pet-card .whatsapp-button {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-whatsapp);
+    color: white;
+    font-weight: 700;
+    border-radius: 0 0 10px 10px;
+    margin: 10px 20px 0;
+    transition: opacity 0.3s;
+}
+
+.pet-card .whatsapp-button:hover {
+    opacity: 0.9;
+    color: white;
+}
+
+/* 3. Ícones de Status */
+.status-icon {
+    font-size: 1em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    color: var(--bg-secondary);
+}
+
+.status-available {
+    background-color: var(--color-secondary); /* Verde Esmeralda */
+}
+
+/* 4. Paginação */
+.pagination-controls {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.page-btn {
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--color-border);
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.page-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.page-btn:not(.active):hover {
+    background-color: var(--color-border);
+}
+
+/* 1. Mensagem de Feedback (Para quando não houver pets) */
+.no-pets-feedback {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.5em;
+    color: var(--text-medium);
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 600px;
+    display: none; 
+}
+
+
+/* --- ESTILOS DE CONTATO (contact.html) --- */
+
+.contact-area {
+    padding: 40px 10%;
+    display: grid;
+    gap: 40px;
+}
+
+.contact-info-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-box {
+    background-color: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    border-top: 3px solid var(--color-secondary);
+}
+
+.contact-box h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.contact-detail {
+    color: var(--text-medium);
+    margin-bottom: 15px;
+}
+
+.email-button, .whatsapp-button {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.email-button {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.whatsapp-button {
+    background-color: var(--color-whatsapp);
+    color: white;
+}
+
+.contact-form-section {
+    padding: 20px 0;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.form-submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-submit-button:hover {
+    background-color: #008f7b;
+}
+
+/* --- ESTILOS PARA VALIDAÇÃO DO FORMULÁRIO (contact.html) --- */
+
+.error-message {
+    color: #e74c3c; /* Vermelho forte para erro */
+    font-size: 0.9em;
+    display: block;
+    margin-top: -15px; /* Puxa para cima para ficar mais próximo do input */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Localização */
+.location-section {
+    text-align: center;
+}
+
+.map-container {
+    max-width: 800px;
+    margin: 20px auto;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* --- ESTILOS DE APADRINHAMENTO (sponsorship.html) --- */
+
+.sponsor-card {
+    /* Ajustes para o card de apadrinhamento */
+    width: 350px; 
+    border-top: 5px solid var(--color-secondary); /* Destaque em verde esmeralda */
+    padding-bottom: 0;
+}
+
+.sponsor-card .whatsapp-button {
+    margin: 20px;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+}
+
+.sponsorship-progress {
+    margin: 15px 20px 20px;
+    padding: 10px 0;
+    border-top: 1px dashed var(--color-border);
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.progress-needed {
+    color: var(--color-primary);
+}
+
+.progress-raised {
+    color: var(--text-medium);
+}
+
+.progress-bar {
+    background-color: var(--bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    height: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--color-secondary); 
+    transition: width 1s ease-out;
+}
+
+.progress-message {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: var(--color-primary);
+    margin-top: 5px;
+}
+
+/* --- ESTILOS DO FORMULÁRIO RÁPIDO --- */
+
+.quick-sponsor-form-section {
+    padding: 60px 10%;
+    text-align: center;
+    background-color: var(--bg-secondary);
+    border-top: 2px solid var(--color-border);
+}
+
+.sponsorship-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: var(--bg-main);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.sponsorship-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.sponsorship-form input,
+.sponsorship-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.sponsorship-form input:focus,
+.sponsorship-form select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+
+/* --- ESTILOS DE FINAIS FELIZES (success_stories.html) --- */
+
+.success-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 5%;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    padding: 20px 5%;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-bar label {
+    font-weight: 500;
+    color: var(--text-medium);
+}
+
+.filter-bar select, .filter-bar input[type="text"] {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-size: 1em;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.story-card {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.3s;
+    border: 1px solid var(--color-border);
+}
+
+.story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* --- ESTILOS DO SWIPER (CARROSSEL) --- */
+
+.swiper {
+    width: 50%;
+    height: auto;
+    max-height: 400px;
+    background-color: black; 
+    position: relative;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    border: none;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px;
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+/* Detalhes da História */
+.story-details {
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.story-details h2 {
+    color: var(--color-primary);
+    font-size: 2em;
+    margin-top: 0;
+}
+
+.story-date {
+    display: block;
+    color: var(--color-secondary);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.adopter-credit {
+    color: var(--text-medium);
+    margin-bottom: 20px;
+}
+
+.story-text {
+    font-style: italic;
+    border-left: 4px solid var(--color-border);
+    padding-left: 15px;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+/* Mensagem de feedback (se não houver histórias) */
+.no-stories-feedback {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.5em;
+    color: var(--text-medium);
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    margin: 40px auto;
+}
+
+
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+
+@media (max-width: 950px) {
+    /* Empilha Carrossel e Detalhes na tela de Finais Felizes */
+    .story-card {
+        flex-direction: column; 
+        max-width: 500px;
+    }
+
+    .swiper, .story-details {
+        width: 100%;
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navegação */
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+    
+    .logo-text {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        gap: 0;
+        text-align: center;
+        background-color: var(--bg-secondary);
+    }
+    
+    nav ul.open {
+        height: auto;
+        padding-bottom: 10px;
+        border-top: 1px solid var(--color-border);
+    }
+    
+    nav ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .mission-grid {
+        flex-direction: column;
+    }
+    
+    /* Filtros (Adoção) */
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 5%;
+    }
+    
+    .filter-controls label {
+        margin-top: 10px;
+    }
+    
+    /* Rodapé */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footer-section ul {
+        padding: 0;
+    }
+
+    /* Contato */
+    .contact-info-grid {
+        flex-direction: column;
+    }
+    
+    .contact-box {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+
+/* Estilos para a caixa de Doação Direta (contact.html) */
+.contact-box.donate-box {
+    /* Destaca a caixa de doação */
+    border-top: 3px solid var(--color-primary); 
+}
+
+.bank-details {
+    background-color: var(--bg-main);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px dashed var(--color-border);
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.bank-details p {
+    margin: 5px 0;
+    color: var(--text-medium);
+}
+
+.bank-details strong {
+    color: var(--color-secondary);
+}
+
+/* Note: O estilo para a seção de Doação Pontual em sponsorship.html foi adicionado inline no HTML. */
